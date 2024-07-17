@@ -1,0 +1,319 @@
+.main#about {
+    overflow: initial;
+    // About section
+    .scabout {
+        --pdt-section: calc(var(--header-height) + 60px);
+        --pdb-section: 232px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        overflow: hidden;
+        // Textbox
+        .textbox.--center {
+            max-width: 616px;
+            // Description
+            .desc {
+                max-width: 606px;
+                margin-top: 21px;
+            }
+        }
+        // Content
+        &__content {
+            margin-top: 112px;
+            // List content
+            &-list {
+                display: grid;
+                gap: var(--gap);
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                margin-top: 28px;
+                // Item
+                .card {
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 24px;
+                    padding: 58px 32px;
+                    // Content
+                    &__content {
+                        margin-top: initial;
+                    }
+                }
+            }
+        }
+        // Blur
+        .blur {
+            top: -25%;
+            left: -35%;
+        }
+        // Responsive
+        @include xs {
+            --pdb-section: 60px;
+            // Textbox
+            .textbox.--center {
+                text-align: initial;
+                max-width: initial;
+                .desc {
+                    max-width: initial;
+                }
+            }
+            // Content
+            &__content {
+                margin-top: 48px;
+                // Textbox
+                .textbox.--horizontal {
+                    align-items: initial;
+                    flex-direction: column;
+                }
+                // List
+                &-list {
+                    --gap: 16px;
+                    margin-top: 16px;
+                    grid-template-columns: 1fr;
+                    .card {
+                        padding: 58px 32px;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+
+    // Mission section
+    .scmission {
+        --padding-container-mission: calc((100% - var(--max-width-container)) / 2);
+        --pdb-section: 180px;
+        padding-left: clamp(
+            var(--padding-container),
+            calc(var(--padding-container-mission) + var(--padding-container)),
+            10000px
+        );
+        padding-bottom: var(--pdb-section);
+        display: flex;
+        gap: 107px;
+        overflow: hidden;
+        // Content
+        &__content {
+            max-width: 607px;
+            // Textbox
+            .textbox {
+                max-width: initial;
+                &:not(:first-child) {
+                    margin-top: 78px;
+                }
+            }
+        }
+        // Image
+        &__image {
+            aspect-ratio: 641 / 859;
+            img {
+                @include midimg;
+            }
+        }
+        // Responsive
+        @include ipad12pro {
+            gap: 16px;
+            // Content
+            &__content {
+                max-width: 50%;
+            }
+            // Image
+            &__image {
+                max-height: initial;
+            }
+        }
+
+        @include xs {
+            --pdb-section: 48px;
+            flex-direction: column;
+            // Content
+            &__content {
+                max-width: initial;
+                margin-bottom: 75px;
+                padding-right: var(--padding-container);
+                .desc {
+                    max-width: initial;
+                }
+                .textbox {
+                    &:not(:first-child) {
+                        margin-top: 65px;
+                    }
+                }
+            }
+            // Image
+            &__image {
+                aspect-ratio: 300 / 322;
+                max-width: 100%;
+                padding-right: var(--padding-container);
+                img {
+                    height: initial;
+                }
+            }
+        }
+    }
+
+    // Timeline section
+    .sctimeline {
+        --pdb-section: 132px;
+        padding-bottom: var(--pdb-section);
+        &__inner {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--gap);
+            // Textbox
+            &-textbox {
+                grid-column: 1 / 5;
+                position: sticky;
+                top: calc(var(--header-height) + var(--gap));
+                align-self: flex-start;
+            }
+
+            // Timeline list
+            &-list {
+                grid-column: 6 / 13;
+                // Item
+                .item {
+                    &:not(:last-child) {
+                        padding-bottom: 40px;
+                    }
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 54px;
+                    // Dot
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        @include size(24px, 24px, true);
+                        background-color: var(--white-cl);
+                        flex-shrink: 0;
+                        margin-top: 5px;
+                    }
+                    .content {
+                        padding-bottom: 40px;
+                        border-bottom: 1px solid var(--white-cl);
+                        // Heading
+                        .heading.--year {
+                            font-size: 2.8rem;
+                            line-height: 3rem;
+                            letter-spacing: 0.028rem;
+                            margin-bottom: 22px;
+                        }
+                        // Description
+                        .desc {
+                            margin-top: 12px;
+                        }
+                    }
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdb-section: 104px;
+            &__inner {
+                --gap: 40px;
+                grid-template-columns: 1fr;
+                // Textbox
+                &-textbox {
+                    grid-column: initial;
+                    position: initial;
+                }
+                // Timeline list
+                &-list {
+                    grid-column: initial;
+                    .item {
+                        gap: 20px;
+                        // Content
+                        .heading.--year {
+                            line-height: 2.5rem;
+                        }
+                        // Dot
+                        &::before {
+                            width: 18px;
+                            height: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Team section
+    .scteam {
+        --pdb-section: 126px;
+        padding-bottom: var(--pdb-section);
+        // Team list
+        &__list {
+            margin-top: 48px;
+            @include flex-mid-between;
+            gap: var(--gap);
+            // Item
+            &-item {
+                background-color: var(--blue-dark-light-cl);
+                border-radius: var(--border-radius-blog-post);
+                padding: 24px;
+                // Thumb
+                .thumb {
+                    border-radius: var(--border-radius-blog-post);
+                    overflow: hidden;
+                    aspect-ratio: 327 / 400;
+                    img {
+                        @include midimg;
+                    }
+                }
+                // Content
+                .content {
+                    text-align: center;
+                    margin-top: 32px;
+                    // Description
+                    .desc {
+                        margin-top: 14px;
+                        font-size: var(--h5-fs);
+                        line-height: var(--h5-lh);
+                        letter-spacing: var(--h5-ls);
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdb-section: 80px;
+            // Textbox
+            &__textbox {
+                flex-direction: column;
+                align-items: initial;
+                gap: initial;
+            }
+            // Team list
+            &__list {
+                flex-direction: column;
+                margin-top: 40px;
+                gap: 16px;
+                // Item
+                &-item {
+                    width: 100%;
+                    padding: 24px 15px;
+                }
+            }
+        }
+    }
+
+    // Logo section
+    .sclogos {
+        --pdb-section: 230px;
+        padding-bottom: var(--pdb-section);
+        .logos {
+            gap: 40px;
+        }
+        // Responsive
+        @include xs {
+            --pdb-section: 80px;
+            .textbox {
+                text-align: center;
+                .desc {
+                    max-width: 510px;
+                }
+            }
+        }
+    }
+}

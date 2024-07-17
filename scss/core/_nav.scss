@@ -1,0 +1,86 @@
+.nav__mobile {
+    @include fullscreen(true);
+    @include mid(true);
+    @include transition(var(--transition-duration));
+    @include visible(false);
+    padding-left: 45px;
+    padding-right: 45px;
+    background-color: var(--blue-dark-cl);
+    pointer-events: none;
+    min-height: 700px;
+    height: 100vh;
+    // Show menu mobile
+    &.--active {
+        @include visible;
+        pointer-events: initial;
+    }
+    // Blur
+    .blur {
+        width: 1200px;
+        @include mid;
+    }
+    // Menu
+    &-menu {
+        width: 100%;
+        padding-top: var(--padding-container);
+        padding-bottom: var(--padding-container);
+        // Text
+        li {
+            display: flex;
+            justify-content: center;
+            &:not(:last-child) {
+                margin-bottom: 40px;
+            }
+            a {
+                display: flex;
+                @include text(var(--font-bold), 2.6rem, normal, 0.14rem, var(--white-cl), uppercase);
+                text-wrap: nowrap;
+                text-align: center;
+                // Text underline
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    top: initial;
+                    bottom: 0;
+                    background-color: var(--white-cl);
+                    height: 1px;
+                    width: calc(100%);
+                    @include transform("translate(-50%) scaleX(0)");
+                    @include transform-origin(right);
+                    @include transition("var(--transition-duration) transform");
+                }
+                // Hover
+                &:hover,
+                &[aria-current="page"] {
+                    &::after {
+                        @include transform("translateX(-50%) scaleX(1)");
+                        @include transform-origin(left);
+                    }
+                }
+            }
+        }
+        // Button
+        .btn {
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    // Responsive
+    @include maxH(540.98px) {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        @include customscroll(5px, var(--gray-cl), var(--main-cl));
+    }
+    @include xxs {
+        // Menu
+        &-menu {
+            // Button
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}

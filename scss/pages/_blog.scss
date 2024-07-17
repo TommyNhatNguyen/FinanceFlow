@@ -1,0 +1,259 @@
+.main#blog {
+    // Blog
+    .scblog {
+        --pdt-section: calc(var(--header-height) + 70px);
+        --pdb-section: 92px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        // Textbox
+        .textbox.--horizontal {
+            .desc {
+                max-width: 568px;
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdt-section: calc(var(--header-height) + 48px);
+            // Blog card
+            .blogcard {
+                grid-template-columns: 1fr;
+                gap: initial;
+                // Textbox
+                .textbox.--article {
+                    max-width: initial;
+                    padding-top: 42px;
+                    padding-left: 24px;
+                    padding-right: 23px;
+                    padding-bottom: 36px;
+                    grid-column: initial;
+                    grid-row: 2;
+                    // Tag
+                    .tag {
+                        position: absolute;
+                        margin-bottom: initial;
+                    }
+                    // Author
+                    .author {
+                        display: flex;
+                        margin-top: 32px;
+                        padding-top: 38px;
+                    }
+                }
+                // Thumb
+                .thumb {
+                    grid-column: initial;
+                }
+            }
+        }
+    }
+    // Latest post
+    .sclastestpost {
+        --pdt-section: 148px;
+        --pdb-section: 80px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        // Textbox
+        .textbox.--horizontal {
+            // Tabs
+            .tabs {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 16px;
+                // Item
+                &__item {
+                    height: 40px;
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    border-radius: var(--border-radius-btn);
+                    background-color: rgba(255, 255, 255, 0.1);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @include text(
+                        var(--font-regular),
+                        var(--body-small-fs),
+                        var(--body-small-lh),
+                        var(--body-small-ls),
+                        var(--white-cl)
+                    );
+                    cursor: pointer;
+                    @include transition(var(--transition-duration));
+                    &:hover,
+                    &.--active {
+                        background-color: var(--main-cl);
+                    }
+                }
+            }
+        }
+        // Posts
+        &__posts {
+            margin-top: 56px;
+            // List
+            &-list {
+                display: none;
+                grid-template-columns: repeat(12, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: var(--gap);
+                // Active
+                &.--active {
+                    display: grid;
+                }
+                // Blog card
+                .blogcard {
+                    // Heading
+                    .heading a {
+                        @include overtext(2);
+                    }
+                    &:nth-last-child(-n + 3) {
+                        grid-column: span 4;
+                        grid-row: 2;
+                    }
+                    &:nth-child(-n + 3) {
+                        grid-column: span 4;
+                        grid-row: 1;
+                    }
+                }
+            }
+            // Paging
+            &-paging {
+                margin-left: auto;
+                margin-right: auto;
+                width: fit-content;
+                @include flex-mid-between;
+                margin-top: 26px;
+                // Paging number
+                li {
+                    .pagenumber {
+                        display: flex;
+                        align-items: center;
+                        list-style-type: none;
+                        padding: 4px 16px;
+                        color: var(--white-cl);
+                        @include transition(var(--transition-duration));
+                        cursor: pointer;
+                        &:hover,
+                        &.--current {
+                            color: var(--main-cl);
+                        }
+                    }
+                }
+                // Paging button
+                .btncontrol {
+                    height: 36px;
+                    aspect-ratio: 36 / 36;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: var(--border-radius-btn);
+                    background-color: rgba(255, 255, 255, 0.1);
+                    cursor: pointer;
+                    @include transition(var(--transition-duration));
+                    img {
+                        @include transition(var(--transition-duration));
+                        margin-left: 2px;
+                        opacity: 0.2;
+                    }
+                    // Hover
+                    &:hover {
+                        background-color: var(--blue-dark-light-cl);
+                        opacity: 1;
+                        img {
+                            opacity: 1;
+                        }
+                    }
+
+                    // Disable
+                    &.--disabled {
+                        pointer-events: none;
+                        cursor: none;
+                    }
+                }
+                .btnprev {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdt-section: 80px;
+            .textbox.--horizontal {
+                display: initial;
+                gap: 24px;
+                // Tabs
+                .tabs {
+                    margin-left: calc(-1 * var(--padding-container));
+                    margin-right: calc(-1 * var(--padding-container));
+                    margin-top: 16px;
+                    justify-content: flex-start;
+                    overflow-x: scroll;
+                    scrollbar-width: none;
+                    flex-wrap: nowrap;
+                    &__item {
+                        &:first-child {
+                            margin-left: var(--padding-container);
+                        }
+                        &:last-child {
+                            margin-right: var(--padding-container);
+                        }
+                    }
+                }
+            }
+            // Posts
+            &__posts {
+                // List
+                &-list {
+                    grid-template-columns: 1fr;
+                    grid-template-rows: initial;
+                    gap: 16px;
+                    // Blog card
+                    .blogcard {
+                        // Heading
+                        .heading a {
+                            @include overtext(initial);
+                        }
+                        &:nth-last-child(-n + 3) {
+                            grid-column: initial;
+                            grid-row: initial;
+                        }
+                        &:nth-child(-n + 3) {
+                            grid-column: initial;
+                            grid-row: initial;
+                        }
+                    }
+                }
+                // Paing
+                &-paging {
+                    margin-top: 16px;
+                }
+            }
+        }
+        @include xxs {
+            // Textbox
+            .textbox.--horizontal {
+                align-items: center;
+                gap: 24px;
+                flex-direction: column;
+                max-width: initial;
+                // Tabs
+                .tabs {
+                    margin-right: initial;
+                    margin-left: initial;
+                    flex-direction: column;
+                    gap: 16px;
+                    width: 100%;
+                    &__item {
+                        height: 48px;
+                        width: 100%;
+                        &:first-child {
+                            margin-left: initial;
+                        }
+                        &:last-child {
+                            margin-right: initial;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

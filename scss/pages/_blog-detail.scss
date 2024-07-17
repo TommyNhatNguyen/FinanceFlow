@@ -1,0 +1,273 @@
+.main#blogdetail {
+    // Blog detail
+    .scblogdetail {
+        --pdt-section: calc(var(--header-height) + 56px);
+        --pdb-section: 120px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        // Textbox
+        .textbox {
+            max-width: 997px;
+            margin-left: auto;
+            margin-right: auto;
+            // Author
+            .author {
+                margin-bottom: 34px;
+            }
+            // Description
+            .desc {
+                max-width: initial;
+                margin-top: 16px;
+            }
+        }
+        // Article
+        &__article {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            padding-top: 64px;
+            gap: 45px;
+            // Table
+            table {
+                grid-column: 2 / 12;
+                border: 1px solid var(--white-cl);
+                caption {
+                    font-family: var(--font-bold);
+                    border: 1px solid var(--white-cl);
+                    padding: 8px;
+                }
+                tbody,
+                thead,
+                tfoot {
+                    text-align: left;
+                    tr {
+                        &:first-child {
+                            th {
+                                font-family: var(--font-bold);
+                            }
+                        }
+                        th,
+                        td {
+                            border: 1px solid var(--white-cl);
+                            padding: 8px;
+                        }
+                    }
+                }
+            }
+            // Iframe
+            iframe {
+                outline: 4px solid var(--white-cl);
+                width: 100%;
+                height: 100%;
+                grid-column: 2 / 12;
+                aspect-ratio: 16 / 9;
+            }
+            // Image
+            &-img {
+                grid-column: span 13;
+                height: auto;
+                width: auto;
+            }
+            // Content
+            &-content {
+                grid-column: 2 / 12;
+                // Heading 2
+                h2 {
+                    margin-bottom: 40px;
+                }
+                // Heading 3
+                h3 {
+                    margin-bottom: 24px;
+                    font-size: 2.8rem;
+                    letter-spacing: 0.028px;
+                    line-height: 3rem;
+                }
+                // Paragraph
+                p {
+                    &:not(:first-of-type) {
+                        margin-top: 16px;
+                    }
+                    a {
+                        color: var(--white-cl);
+                        width: fit-content;
+                        position: relative;
+                        &::after {
+                            content: "";
+                            display: inline-block;
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 1px;
+                            background-color: var(--white-cl);
+                        }
+                    }
+                }
+                // List
+                ul {
+                    li {
+                        display: flex;
+                        align-items: center;
+                        &::before {
+                            content: "";
+                            display: inline-block;
+                            margin-right: 12px;
+                            @include size(5px, 5px, true);
+                            background-color: var(--white-cl);
+                        }
+                    }
+                }
+            }
+            // Figure
+            &-figure {
+                grid-column: 2 / 12;
+                text-align: center;
+                // Image
+                .img {
+                    aspect-ratio: 16 / 9;
+                    width: 100%;
+                    img {
+                        @include midimg;
+                    }
+                }
+                // Caption
+                .caption {
+                    margin-top: 22px;
+                    font-style: italic;
+                    @include text(
+                        var(--font-regular),
+                        var(--body-small-fs),
+                        var(--body-small-lh),
+                        var(--body-small-ls),
+                        var(--white-cl)
+                    );
+                }
+            }
+            // Blockquote
+            blockquote {
+                grid-column: 2 / 12;
+                padding: 40px 50px;
+                background-color: var(--blue-dark-light-cl);
+                border-radius: 30px;
+            }
+        }
+        // Socials
+        &__socials {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--gap);
+            margin-top: 24px;
+            &-wrapper {
+                grid-column: 10 / 13;
+                display: flex;
+                align-items: center;
+                gap: 17px;
+                // Text
+                .text {
+                    font-family: var(--font-medium);
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdt-section: calc(var(--header-height) + 48px);
+            --pdb-section: 80px;
+            // Textbox
+            .textbox {
+                // Author
+                .author {
+                    margin-bottom: 32px;
+                }
+            }
+
+            // Aricle
+            &__article {
+                grid-template-columns: 1fr;
+                padding-top: 32px;
+                gap: 30px;
+                &-img,
+                &-content,
+                &-figure,
+                &-blockquote {
+                    grid-column: initial;
+                }
+                // Content
+                &-content {
+                    // Heading h2
+                    h2 {
+                        margin-bottom: 24px;
+                    }
+                    // Heading h3
+                    h3 {
+                        margin-bottom: 24px;
+                    }
+                    &:nth-child(3) {
+                        margin-top: -6px;
+                    }
+                }
+                // Figure
+                &-figure {
+                    .caption {
+                        text-align: left;
+                    }
+                }
+                // Blockquote
+                blockquote {
+                    grid-column: initial;
+                    padding: 32px;
+                    @include text(
+                        var(--font-medium),
+                        var(--body-small-fs),
+                        var(--body-small-lh),
+                        var(--body-small-ls),
+                        var(--white-cl)
+                    );
+                }
+            }
+
+            // Socials
+            &__socials {
+                margin-top: 37px;
+                grid-template-columns: 1fr;
+                gap: initial;
+            }
+        }
+    }
+
+    // Latest post
+    .sclastestpost {
+        --pdtb-section: 120px;
+        padding-top: var(--pdtb-section);
+        padding-bottom: var(--pdtb-section);
+        // Posts
+        &__posts {
+            margin-top: 56px;
+            &-list {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: var(--gap);
+                .blogcard {
+                    grid-column: span 4;
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdtb-section: 80px;
+            // Textbox
+            .textbox.--horizontal {
+                align-items: center;
+                gap: 16px;
+            }
+            // Posts
+            &__posts {
+                &-list {
+                    grid-template-columns: 1fr;
+                    gap: 16px;
+                    .blogcard {
+                        grid-column: initial;
+                    }
+                }
+            }
+        }
+    }
+}

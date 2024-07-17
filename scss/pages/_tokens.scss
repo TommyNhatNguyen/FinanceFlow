@@ -1,0 +1,205 @@
+.main#tokens {
+    // Desktop
+    .sctokens {
+        --pdt-section: calc(var(--header-height) + 60px);
+        --pdb-section: 120px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        &.--hide {
+            display: none;
+        }
+        // Textbox
+        &__textbox {
+            max-width: 568px;
+            .desc {
+                max-width: initial;
+            }
+        }
+        // Table
+        &__table {
+            margin-top: 100px;
+            .row {
+                display: grid;
+                grid-template-columns: 2.5fr 2.5fr 2fr 2fr 1fr;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                gap: 30px;
+                .column {
+                    padding-top: 40px;
+                    padding-bottom: 42px;
+                    padding-left: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+            }
+            // Data
+            &-data {
+                .column {
+                    // Text data
+                    p,
+                    a {
+                        @include text(
+                            var(--font-regular),
+                            var(--body-small-fs),
+                            var(--body-small-lh),
+                            var(--body-small-ls),
+                            var(--white-cl)
+                        );
+                    }
+                    a {
+                        text-decoration: underline;
+                    }
+                    // Number data
+                    p.--number {
+                        font-family: var(--font-bold);
+                    }
+                    // Icon group
+                    &.icongroup {
+                        gap: 16px;
+                    }
+                    .icongroup {
+                        // Icon
+                        &__icon {
+                            height: 46px;
+                            aspect-ratio: 46/46;
+                        }
+                        // Text
+                        &__text {
+                            @include text(var(--font-bold), 1.8rem, 2rem, 0rem, var(--white-cl));
+                        }
+                        // Tag
+                        &__tag {
+                            height: 26px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            background-color: var(--blue-dark-light-cl);
+                            @include mid(true);
+                            border-radius: var(--border-radius-btn);
+                            p {
+                                @include text(var(--font-medium), 1.2rem, 1.2rem, 0.06px, var(--white-cl), uppercase);
+                            }
+                        }
+                    }
+                }
+            }
+            // Title
+            &-title {
+                .column {
+                    p {
+                        @include text(var(--font-bold), 1.6rem, 1.8rem, 0.01px, var(--white-cl), uppercase);
+                    }
+                }
+            }
+        }
+        // Responsive
+        @include ipad10pro {
+            // Table
+            &__table {
+                .row {
+                    gap: 15px;
+                }
+                // Data
+                &-data {
+                    .column {
+                        &.icongroup {
+                            gap: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Mobile
+    .sctokensmobile {
+        --pdt-section: calc(var(--header-height) + 48px);
+        --pdb-section: 80px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        &.--hide {
+            display: none;
+        }
+        // Textbox
+        &__textbox {
+            max-width: initial;
+        }
+        // Tokens
+        &__tokens {
+            margin-top: 48px;
+            // Group
+            &-group {
+                padding-top: 32px;
+                padding-bottom: 32px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                // Title
+                p.title {
+                    margin-bottom: 16px;
+                    @include text(var(--font-bold), 1.6rem, 1.8rem, 0.01px, var(--white-cl), uppercase);
+                }
+                // Icongroup
+                .icongroup {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    // Icon
+                    &__icon {
+                        height: 46px;
+                        aspect-ratio: 46/46;
+                    }
+                    // Text
+                    &__text {
+                        @include text(var(--font-bold), 1.8rem, 2rem, 0rem, var(--white-cl));
+                    }
+                    // Tag
+                    &__tag {
+                        height: 26px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        background-color: var(--blue-dark-light-cl);
+                        @include mid(true);
+                        border-radius: var(--border-radius-btn);
+                        p {
+                            @include text(var(--font-medium), 1.2rem, 1.2rem, 0.06px, var(--white-cl), uppercase);
+                        }
+                    }
+                }
+                // Text
+                p,
+                a {
+                    @include text(
+                        var(--font-regular),
+                        var(--body-small-fs),
+                        var(--body-small-lh),
+                        var(--body-small-ls),
+                        var(--white-cl)
+                    );
+                }
+                a {
+                    text-decoration: underline;
+                }
+                // Number data
+                p.--number {
+                    font-family: var(--font-bold);
+                }
+                //
+            }
+        }
+        // Responsive
+        @include xxs {
+            // Textbox
+            &__textbox {
+                .desc {
+                    max-width: initial;
+                }
+            }
+            // Tokens
+            &__tokens {
+                // Group
+                &-group {
+                    p {
+                        max-width: 258px;
+                    }
+                }
+            }
+        }
+    }
+}

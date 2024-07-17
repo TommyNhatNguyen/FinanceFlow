@@ -1,0 +1,109 @@
+:root {
+    // Page setting, container
+    --max-width-page: 2560px;
+    --gap: 26px;
+    --padding-container: 28px;
+    --max-width-container: calc(1198px + var(--padding-container) * 2);
+    // Header height
+    --header-height: 100px;
+    // Button
+    --btnprimary-height: 70px;
+    --btnprimary-pd: 32px;
+    --btnsecondary-height: 70px;
+    --btnsecondary-pd: 32px;
+    // Color
+    --main-cl: #0328ee;
+    --white-cl: #ffffff;
+    --white-cl-opacity: rgba(255, 255, 255, var(--opacity));
+    --blue-dark-cl: #010725;
+    --blue-light-cl: #00116a;
+    --blue-dark-light-cl: #010d50;
+    --red-cl: #ee0303; // Opacity
+    --opacity: 0.1;
+    // Border
+    --border-radius-blog-post: 40px;
+    --border-radius-btn: 80px;
+    // Transition
+    --transition-duration: 0.3s;
+    // Font family
+    --font-regular: "dr";
+    --font-medium: "dm";
+    --font-bold: "db";
+    // Typography
+    --h1-fs: 6.6rem;
+    --h1-lh: 8rem;
+    --h1-ls: -0.1rem;
+
+    --h2-fs: 4.2rem;
+    --h2-lh: 5.5rem;
+    --h2-ls: 0rem;
+
+    --h3-fs: 1.8rem;
+    --h3-lh: 2.6rem;
+    --h3-ls: 0.09rem;
+
+    --h4-fs: 1.8rem;
+    --h4-lh: 2.6rem;
+    --h4-ls: 0.09rem;
+
+    --h5-fs: 1.6rem;
+    --h5-lh: 1.8rem;
+    --h5-ls: 0.08rem;
+
+    --label-fs: 1.8rem;
+    --label-lh: 2.6rem;
+    --label-ls: 0.09rem;
+
+    --text-btn-fs: 1.6rem;
+    --text-btn-lh: 1.6rem;
+    --text-btn-ls: 0.16rem;
+
+    --body-big-fs: 1.8rem;
+    --body-big-lh: 3.2rem;
+    --body-big-ls: 0rem;
+
+    --body-small-fs: 1.6rem;
+    --body-small-lh: 2.6rem;
+    --body-small-ls: 0rem;
+
+    --text-menu-fs: 1.4rem;
+    --text-menu-lh: 1.6rem;
+    --text-menu-ls: 0.14rem;
+
+    --text-tag-fs: 1.4rem;
+    --text-tag-lh: 1.8rem;
+    --text-tag-ls: 0.07rem;
+    // Responsive
+    @include md {
+        --max-width-container: calc(1140px + var(--padding-container) * 2);
+    }
+    @include sm {
+        --max-width-container: calc(960px + var(--padding-container) * 2);
+    }
+    @include xs {
+        --max-width-container: 100%;
+        --padding-container: 15px;
+        --header-height: 73px;
+
+        // Typography
+        --h1-fs: 3.8rem;
+        --h1-lh: 4.6rem;
+        --h1-ls: -0.1rem;
+
+        --h2-fs: 2.8rem;
+        --h2-lh: 3.6rem;
+        --h2-ls: 0rem;
+
+        --label-fs: 1.4rem;
+        --label-lh: 1.8rem;
+        --label-ls: 0.07rem;
+
+        --body-big-fs: 1.6rem;
+        --body-big-lh: 2.6rem;
+        --body-big-ls: 0rem;
+
+        --text-menu-fs: 3.2rem;
+        --text-menu-lh: normal;
+        --text-menu-ls: 0.14rem;
+    }
+}

@@ -1,0 +1,122 @@
+main#pricing {
+    .scpricing {
+        --pdt-section: calc(var(--header-height) + 40px);
+        --pdb-section: 225px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        // Textbox
+        &__textbox {
+            .desc {
+                max-width: 568px;
+            }
+        }
+        // Features
+        &__features {
+            @include flex-mid-between;
+            margin-top: 40px;
+            margin-bottom: 56px;
+            gap: var(--gap);
+            // Item
+            &-item {
+                @include flex-mid-between;
+                gap: 24px;
+                // Icon
+                .icon {
+                    height: 68px;
+                    aspect-ratio: 68 / 68;
+                }
+            }
+        }
+        // Pricing
+        &__pricing {
+            @include flex-mid-between;
+            gap: var(--gap);
+            // Item
+            &-item {
+                background-color: var(--blue-dark-light-cl);
+                border-radius: var(--border-radius-blog-post);
+                padding-top: 48px;
+                padding-bottom: 42px;
+                padding-left: 32px;
+                padding-right: 30px;
+                // Textbox
+                .textbox.--article {
+                    // Heading
+                    .heading {
+                        margin-top: 16px;
+                    }
+                }
+                // Features
+                .features {
+                    margin-top: 40px;
+                    margin-bottom: 54px;
+                    // List
+                    &__list {
+                        // Item
+                        &-item {
+                            margin-top: 16px;
+                            display: flex;
+                            align-items: center;
+                            gap: 16px;
+                            // Dot
+                            &::before {
+                                content: "";
+                                display: block;
+                                flex-shrink: 0;
+                                @include size(6px, 6px, true);
+                                background-color: var(--main-cl);
+                            }
+                        }
+                    }
+                }
+                // Button
+                .btncontact {
+                    width: 100%;
+                }
+            }
+        }
+
+        // Responsive
+        @include maxW(818px) {
+            --pdb-section: 80px;
+            // Pricing
+            &__pricing {
+                flex-direction: column;
+                align-items: initial;
+                // Item
+                &-item {
+                    padding-top: 48px;
+                    padding-bottom: 42px;
+                    padding-right: 30px;
+                    padding-left: 30px;
+                }
+            }
+        }
+
+        @include xs {
+            --pdt-section: calc(var(--header-height) + 48px);
+            // Textbox
+            &__textbox {
+                // Description
+                .desc {
+                    margin-left: initial;
+                    margin-right: initial;
+                }
+            }
+            // Features
+            &__features {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 38px;
+                margin-top: 40px;
+                margin-bottom: 48px;
+                // Item
+                &-item {
+                    gap: 18px;
+                    margin-top: initial;
+                    margin-bottom: initial;
+                }
+            }
+        }
+    }
+}

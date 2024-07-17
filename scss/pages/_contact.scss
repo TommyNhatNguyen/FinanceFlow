@@ -1,0 +1,321 @@
+.main#contact {
+    overflow: hidden;
+    .container {
+        position: relative;
+    }
+    // Get in touch
+    .scgetintouch {
+        --pdt-section: calc(var(--header-height) + 80px);
+        padding-top: var(--pdt-section);
+        // Container
+        .container {
+            display: grid;
+            grid-template-columns: 1.971fr 1fr;
+            gap: 64px;
+            align-items: flex-start;
+            // Blur
+            .blur.--dark {
+                right: -38%;
+                top: -80%;
+            }
+        }
+        // Form
+        &__form {
+            // Wrapper
+            &-wrapper {
+                margin-top: 52px;
+                // Row
+                .formrow {
+                    &:not(:first-child) {
+                        margin-top: 32px;
+                    }
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 25px;
+                    // Form group
+                    .formgroup {
+                        display: flex;
+                        flex-direction: column;
+
+                        width: 100%;
+                        position: relative;
+                        // Input
+                        input[type="text"] {
+                            background-color: var(--blue-dark-light-cl);
+                            border-radius: 100px;
+                            border: initial;
+                            outline: 1px solid var(--blue-dark-cl);
+                            caret-color: var(--white-cl);
+                            padding: 20px 25px;
+                            margin-top: 12px;
+                            @include text(var(--font-regular), 1.8rem, 2.7rem, 0rem, var(--white-cl));
+                            @include transition(var(--transition-duration));
+                            &::placeholder {
+                                @include text(var(--font-regular), 1.8rem, 2.7rem, 0rem, var(--white-cl));
+                            }
+                            &:focus {
+                                outline: 1px solid var(--white-cl);
+                            }
+                        }
+
+                        // Textarea
+                        textarea {
+                            background-color: var(--blue-dark-light-cl);
+                            border-radius: 14px;
+                            border: initial;
+                            outline: 1px solid var(--blue-dark-cl);
+                            caret-color: var(--white-cl);
+                            padding: 20px 25px;
+                            min-height: 162px;
+                            margin-top: 12px;
+                            @include text(var(--font-regular), 1.8rem, 2.7rem, 0rem, var(--white-cl));
+                            @include transition(var(--transition-duration));
+                            &::placeholder {
+                                @include text(var(--font-regular), 1.8rem, 2.7rem, 0rem, var(--white-cl));
+                            }
+                            &:focus {
+                                outline: 1px solid var(--white-cl);
+                            }
+                        }
+
+                        // Error
+                        label.error {
+                            position: initial;
+                            margin-top: 4px;
+                            max-height: 0;
+                        }
+
+                        &.--error {
+                            // Label
+                            label.error {
+                                margin-bottom: 26px;
+                                @include visible(true);
+                            }
+                            // Input text
+                            input[type="text"],
+                            textarea {
+                                outline: 1px solid var(--red-cl);
+                            }
+                        }
+
+                        // Active
+                        &.--active {
+                            // Input text
+                            input[type="text"],
+                            textarea {
+                                &:focus {
+                                    outline: 1px solid var(--main-cl);
+                                }
+                            }
+                        }
+                    }
+                }
+                // Button submit
+                .btnsubmit {
+                    border: initial;
+                    margin-top: 52px;
+                }
+            }
+        }
+        // Content
+        &__content {
+            // Icons
+            .icons {
+                margin-top: 36px;
+                // Item
+                &__item {
+                    gap: 15px;
+                    &:not(:last-child) {
+                        margin-bottom: 24px;
+                    }
+                    // Logo
+                    &-logo {
+                        height: 38px;
+                        aspect-ratio: 38 / 38;
+                    }
+                    // Description
+                    &-desc {
+                        color: var(--white-cl);
+                        font-family: var(--font-medium);
+                    }
+                }
+            }
+        }
+        // Responsive
+        @include ipad12pro {
+            // Container
+            .container {
+                gap: 30px;
+            }
+        }
+        @include xs {
+            --pdt-section: calc(var(--header-height) + 48px);
+            // Container
+            .container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+                // Blur
+                .blur.--dark {
+                    right: -25%;
+                    top: -40%;
+                }
+            }
+            // Form
+            &__form {
+                // Wrapper
+                &-wrapper {
+                    margin-top: 40px;
+                    // Formrow
+                    .formrow {
+                        flex-direction: column;
+                        gap: 24px;
+                        // Formgroup
+                        .formgroup {
+                            label {
+                                font-size: 1.8rem;
+                                line-height: 2.6rem;
+                                letter-spacing: 0.09rem;
+                            }
+                        }
+                    }
+                    // Button submit
+                    .btnsubmit {
+                        margin-top: 32px;
+                    }
+                }
+            }
+            // Content
+            &__content {
+                // Textbox
+                .textbox {
+                    // Description
+                    .desc {
+                        margin-top: 19px;
+                    }
+                    // Icons
+                    .icons {
+                        margin-top: 24px;
+                        // Item
+                        &__item {
+                            font-size: 1.8rem;
+                            line-height: 2.9rem;
+                            letter-spacing: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Accordian
+    .scfaqs {
+        --pdt-section: 120px;
+        --pdb-section: 120px;
+        padding-top: var(--pdt-section);
+        padding-bottom: var(--pdb-section);
+        // Inner
+        &__inner {
+            max-width: 790px;
+            margin-left: auto;
+            margin-right: auto;
+            // Title
+            &-title {
+                margin-bottom: 80px;
+                text-align: center;
+            }
+            // List
+            &-list {
+                .content {
+                    cursor: pointer;
+                    padding-top: 32px;
+                    padding-bottom: 32px;
+                    padding-left: 8px;
+                    padding-right: 3px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                    // Title
+                    .title {
+                        @include flex-mid-between;
+                        gap: 8px;
+                        // Heading
+                        h3.heading {
+                            @include text(var(--font-bold), 2.8rem, 3rem, 0.028rem, var(--white-cl));
+                        }
+                        // Icon
+                        .icon {
+                            position: relative;
+                            cursor: pointer;
+                            width: 27px;
+                            aspect-ratio: 27 / 27;
+                            background-color: transparent;
+                            @include mid(true);
+                            span {
+                                height: 2px;
+                                width: 100%;
+                                background-color: var(--white-cl);
+                                display: block;
+                                position: absolute;
+                            }
+                            &::before {
+                                content: "";
+                                height: 100%;
+                                width: 2px;
+                                display: block;
+                                background-color: var(--white-cl);
+                                position: absolute;
+                                transform: scaleY(1);
+                                transform-origin: bottom;
+                                @include transition(var(--transition-duration) transform);
+                            }
+                            // Active
+                            &.--active {
+                                &::before {
+                                    transform: scaleY(0);
+                                    transform-origin: bottom;
+                                }
+                            }
+                        }
+                    }
+                    // Text
+                    .text {
+                        transition: max-height 0.3s ease-out;
+                        max-height: 0;
+                        overflow: hidden;
+                        p {
+                            padding-top: 16px;
+                        }
+                    }
+                }
+            }
+        }
+        // Responsive
+        @include xs {
+            --pdt-section: 50px;
+            --pdb-section: 26px;
+            // Inner
+            &__inner {
+                max-width: initial;
+                // title
+                &-title {
+                    margin-bottom: 32px;
+                }
+                // List
+                &-list {
+                    .content {
+                        padding-top: 24px;
+                        padding-bottom: 24px;
+                        padding-left: initial;
+                        padding-right: initial;
+                        // Title
+                        .title {
+                            @include flex-mid-between;
+                            gap: 8px;
+                            // Heading
+                            h3.heading {
+                                @include text(var(--font-bold), 1.8rem, 2.6rem, 0.028rem, var(--white-cl));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

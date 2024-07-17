@@ -1,0 +1,217 @@
+.header {
+    height: var(--header-height);
+    width: 100%;
+    max-width: var(--max-width-page);
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    background-color: transparent;
+    @include transition(var(--transition-duration));
+    // Active change background color
+    &.--active-bg-cl {
+        --header-height: 90px;
+        background-color: var(--blue-dark-light-cl);
+    }
+    // Container
+    .container {
+        @include flex-mid-between;
+        height: 100%;
+        gap: var(--gap);
+    }
+    // Nav
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: 54px;
+        z-index: 1;
+        // Logo
+        &-logo {
+            width: 100%;
+            max-width: 154px;
+            position: relative;
+            img {
+                @include midimg;
+            }
+            // Line
+            &::after {
+                content: "";
+                display: block;
+                background-color: var(--blue-dark-light-cl);
+                height: 66px;
+                width: 1px;
+                position: absolute;
+                top: 50%;
+                right: -34px;
+                transform: translateY(-50%);
+            }
+        }
+        // Menu
+        &-menu {
+            display: flex;
+            align-items: center;
+            li {
+                display: flex;
+                a {
+                    padding-right: 13px;
+                    padding-left: 13px;
+                    @include text(
+                        var(--font-medium),
+                        var(--text-menu-fs),
+                        var(--text-menu-lh),
+                        var(--text-menu-ls),
+                        var(--white-cl),
+                        uppercase
+                    );
+                    text-wrap: nowrap;
+
+                    // Text underline
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 50%;
+                        top: initial;
+                        bottom: 0;
+                        background-color: var(--white-cl);
+                        height: 1px;
+                        width: calc(100% - 13px * 2);
+                        @include transform("translate(-50%) scaleX(0)");
+                        @include transform-origin(right);
+                        @include transition("var(--transition-duration) transform");
+                    }
+                    // Hover
+                    &:hover,
+                    &[aria-current="page"] {
+                        &::after {
+                            @include transform("translateX(-50%) scaleX(1)");
+                            @include transform-origin(left);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Button
+    &__cta {
+        @include flex-mid-between;
+        z-index: 2;
+        // Download button
+        &-btn {
+            height: 56px;
+        }
+        // Hamburger
+        &-hamburger {
+            cursor: pointer;
+            position: relative;
+            height: 45px;
+            aspect-ratio: 1/1;
+            background-color: var(--main-cl);
+            border-radius: 100%;
+            display: none;
+            span {
+                @include visible;
+                display: block;
+                background-color: var(--white-cl);
+                width: 25px;
+                height: 2px;
+                @include transition(var(--transition-duration));
+                @include mid;
+            }
+            &::before,
+            &::after {
+                @include visible;
+                content: "";
+                display: block;
+                background-color: var(--white-cl);
+                width: 25px;
+                height: 2px;
+                @include transition(var(--transition-duration));
+                position: absolute;
+            }
+            &::before {
+                bottom: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            &::after {
+                top: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            // Show hamburger
+            &.--active {
+                span {
+                    @include visible(false);
+                }
+                &::before {
+                    transform: rotate(-45deg) translate(-3px, -14px);
+                }
+                &::after {
+                    transform: rotate(45deg) translate(-4px, 13px);
+                }
+            }
+        }
+    }
+    // Responsive
+    @include maxW(1030.98px) {
+        // Nav
+        &__nav {
+            gap: 33px;
+            // Logo
+            &-logo {
+                // Line
+                &::after {
+                    right: -20px;
+                }
+            }
+            // Menu
+            &-menu {
+                li {
+                    a {
+                        padding-right: 6px;
+                        padding-left: 6px;
+                        &::after {
+                            width: calc(100% - 6px * 2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include maxW(920px) {
+        // Nav
+        &__nav {
+            // Logo
+            &-logo {
+                // line
+                &::after {
+                    content: none;
+                }
+            }
+            // Menu
+            &-menu {
+                display: none;
+            }
+        }
+        // Button
+        &__cta {
+            // Button
+            &-btn {
+                display: none;
+            }
+            // Hamburger
+            &-hamburger {
+                display: flex;
+            }
+        }
+    }
+    @include ipad10pro {
+        // Nav
+        &__nav {
+            // Logo
+            &-logo {
+                max-width: 136px;
+            }
+        }
+    }
+}

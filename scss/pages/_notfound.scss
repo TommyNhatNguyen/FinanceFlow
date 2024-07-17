@@ -1,0 +1,66 @@
+.main#notfound {
+    .scnotfound {
+        height: 100vh;
+        .container {
+            min-height: 550px;
+            height: 100%;
+            @include mid(true);
+            flex-direction: column;
+            text-align: center;
+            gap: 16px;
+        }
+        // 404 Heading
+        h1.heading {
+            @include text(var(--font-bold), 18rem, 16rem, 0rem, var(--main-cl), uppercase);
+        }
+        .textbox.--center {
+            // Textbox
+            p.desc {
+                max-width: 557px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        // Button group
+        .btngroup {
+            gap: 24px;
+        }
+        // Blur
+        .blur {
+            width: 100vw;
+            height: 100vh;
+            @include mid;
+        }
+        // Responsive
+        @include xs {
+            // Textbox
+            .textbox {
+                text-align: center;
+            }
+            // Button group
+            .btngroup {
+                flex-direction: row;
+            }
+        }
+        @include xxs {
+            .container {
+                gap: 32px;
+            }
+            // Heading
+            h1.heading {
+                @include text(var(--font-bold), 12rem, 12rem, 0rem, var(--main-cl), uppercase);
+            }
+
+            // Description
+            p.desc {
+                margin-top: 16px;
+            }
+            // Button group
+            .btngroup {
+                flex-direction: column;
+                width: 100%;
+                gap: 16px;
+            }
+        }
+    }
+}
